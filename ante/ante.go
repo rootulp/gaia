@@ -17,13 +17,13 @@ type HandlerOptions struct {
 }
 
 func NewAnteHandler(opts HandlerOptions) (sdk.AnteHandler, error) {
-	if opts.AccountKeeper == nil {
+	if opts.HandlerOptions.AccountKeeper == nil {
 		return nil, sdkerrors.Wrap(sdkerrors.ErrLogic, "account keeper is required for AnteHandler")
 	}
-	if opts.BankKeeper == nil {
+	if opts.HandlerOptions.BankKeeper == nil {
 		return nil, sdkerrors.Wrap(sdkerrors.ErrLogic, "bank keeper is required for AnteHandler")
 	}
-	if opts.SignModeHandler == nil {
+	if opts.HandlerOptions.SignModeHandler == nil {
 		return nil, sdkerrors.Wrap(sdkerrors.ErrLogic, "sign mode handler is required for ante builder")
 	}
 
